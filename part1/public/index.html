@@ -8,6 +8,7 @@
 </head>
 
 <body>
+    
     <div id="app">
         <h1>dog of the day</h1>
         <div v-if="dogImg">
@@ -18,8 +19,9 @@
                 <p><strong>size: {{item.size}}</strong></p>
             </div>
         </div>
+        <button @click="'fetchDogImg">Next</button>
     </div>
-    <button @click="'fetchDogImg">Next</button>
+
     <script>
         const { createApp } = Vue;
         createApp({
