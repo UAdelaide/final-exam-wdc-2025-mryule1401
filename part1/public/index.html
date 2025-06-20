@@ -8,15 +8,16 @@
 </head>
 
 <body>
-    
+
     <div id="app">
         <h1>dog of the day</h1>
         <div v-if="dogImg">
             <img :src="dogImg" alt="dog">
             <div class="dog-detail">
-                <div v-for="item in dogInfo" :key="item.name"></div>
-                <p><strong>Name: {{item.name}}</strong></p>
-                <p><strong>size: {{item.size}}</strong></p>
+                <div v-for="item in dogInfo" :key="item.name">
+                    <p><strong>Name: {{item.name}}</strong></p>
+                    <p><strong>size: {{item.size}}</strong></p>
+                </div>
             </div>
         </div>
         <button @click="'fetchDogImg">Next</button>
