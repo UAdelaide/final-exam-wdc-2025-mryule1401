@@ -36,7 +36,9 @@ router.get('/me', async (req, res) => {
 
   const [rows] = await db.query(`
     SELECT user_id, username, role
-    `)
+    FROM Users
+    WHERE username =?
+    `,[username]);
 });
 
 // POST login (dummy version)
