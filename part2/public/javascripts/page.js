@@ -189,6 +189,11 @@ function login(){
         if (this.readyState == 4 && this.status == 200) {
             alert("Welcome "+this.responseText);
             let response = JSON.parse(this.responseText);
+            if (response.user.role === 'owner') {
+                window.location.href = 'owner-dashboard.html'; // Redirect for owner
+            } else if (response.user.role === 'walker') {
+                window.location.href = 'walker-dashboard.html'; // Redirect for walker
+            }
         } else if (this.readyState == 4 && this.status >= 400) {
             alert("Login failed");
         }
