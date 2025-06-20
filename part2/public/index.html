@@ -9,7 +9,7 @@
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="javascripts/page.js" defer></script>
   <style>
-    .btn-login{
+    .btn-login {
       margin-top: 10px;
       margin-bottom: 10px;
       background-color: rgb(13, 110, 253);
@@ -17,10 +17,12 @@
       border: solid 0.5px rgb(13, 110, 253);
       border-radius: 5px;
     }
-    input{
+
+    input {
       width: 400px;
     }
-    .btn-login:hover{
+
+    .btn-login:hover {
       background-color: rgb(39, 188, 242);
     }
   </style>
@@ -32,8 +34,8 @@
     <h1 class="mb-4 text-primary">{{ message }}</h1>
     <p class="lead">Connect with trusted walkers for your beloved dog!</p>
     <div id="login-sys">
-      <label for="username">Username</label><br><input type="text" id="username"/><br>
-      <label for="password">Password</label><br><input type="password" id="password"/><br>
+      <label for="username">Username</label><br><input type="text" id="username" /><br>
+      <label for="password">Password</label><br><input type="password" id="password" /><br>
       <button class="btn-login" type="button" onclick="login()">Log In</button><br>
       <!-- <button type="button" onclick="logout()">Logout</button> -->
       <!-- <a href="owner-dashboard.html" class="btn btn-outline-primary me-2">Owner Dashboard</a>
@@ -52,20 +54,22 @@
       },
       async mounted() {
 
-                const dog = await fetch('/api/users');
-                const data = await dog.json();
-                this.user = Array.isArray(data) ? data : [data];
+        const dog = await fetch('/api/users');
+        const data = await dog.json();
+        this.user = Array.isArray(data) ? data : [data];
 
-            },
-            methods: {
-              login (){
-                const a = document.getElementById('username').value;
-                const b = document.getElementById('password').value;
-                if (a === this.user.username && this.user.role ==="owner")
-
-              }
-
+      },
+      methods: {
+        login() {
+          const a = document.getElementById('username').value;
+          const b = document.getElementById('password').value;
+          if (a === this.user.username && this.user.role === "owner"){
+            window.location.href = 'owner-dashboard.html';
+          }
+          else if
         }
+
+      }
     }).mount('#app');
   </script>
 
