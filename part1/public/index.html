@@ -17,14 +17,15 @@
         createApp({
             data() {
                 return {
-                    dogImg: null
+                    dogImg: null,
+                    dogInfo: []
                 };
             },
             async mounted() {
                 this.fetchDogImg();
 
                 const dog = await fetch('/api/dogs');
-                this.dog = await dog.json();
+                this.dogInfo = await dog.json();
 
             },
             methods: {
