@@ -150,7 +150,7 @@
          async function getDog() {
           const data = await fetch ('/getDog');
           const result = await data.json()
-          this
+          this.dogs = result.dogs;
         }
 
         onMounted(() => {
