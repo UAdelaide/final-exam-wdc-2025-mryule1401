@@ -44,7 +44,7 @@ router.get('/me',async (req, res) => {
     }
 
     res.json({ user_id: rows[0].user_id, username: rows[0].username, role: rows[0].role });
-  res.json(req.session.user);
+  // res.json(req.session.user);
 });
 
 // POST login (dummy version)
