@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <script src="javascripts/page.js" defer></script>
   <style>
     .btn-login {
       margin-top: 10px;
@@ -17,11 +16,9 @@
       border: solid 0.5px rgb(13, 110, 253);
       border-radius: 5px;
     }
-
     input {
       width: 400px;
     }
-
     .btn-login:hover {
       background-color: rgb(39, 188, 242);
     }
@@ -29,17 +26,13 @@
 </head>
 
 <body class="bg-light">
-
   <div id="app" class="container py-5">
     <h1 class="mb-4 text-primary">{{ message }}</h1>
     <p class="lead">Connect with trusted walkers for your beloved dog!</p>
     <div id="login-sys">
       <label for="username">Username</label><br><input type="text" id="username" /><br>
       <label for="password">Password</label><br><input type="password" id="password" /><br>
-      <button class="btn-login" type="button" @click="login()">Log In</button><br>
-      <!-- <button type="button" onclick="logout()">Logout</button> -->
-      <!-- <a href="owner-dashboard.html" class="btn btn-outline-primary me-2">Owner Dashboard</a>
-      <a href="walker-dashboard.html" class="btn btn-outline-success">Walker Dashboard</a> -->
+      <button class="btn-login" type="button" @click="login">Log In</button><br>
     </div>
   </div>
 
@@ -49,28 +42,44 @@
       data() {
         return {
           message: 'Welcome to the Dog Walking Service!',
-          user: []
+          user: [] // Array to hold users from API
         };
       },
       async mounted() {
-
-        const dog = await fetch('/api/users');
-        const data = await dog.json();
-        this.user = Array.isArray(data) ? data : [data];
-
+        try {
+          const response = await fetch('/api/users');
+          if (!response.ok) throw new Error('Failed to fetch users');
+          const data = await response.json();
+          this.user = Array.isArray(data) ? data : [data]; // Ensure user is an array
+        } catch (error) {
+          console.error('Error fetching users:', error);
+        }
       },
       methods: {
         login() {
-          const a = document.getElementById('username').value;
-          const b = document.getElementById('password').value;
-          if (a === this.user.username && this.user.role === "owner"){
-            window.location.href = 'owner-dashboard.html';
+          const username = document.getElementById('username').value;
+          const password = document.getElementById('password').value;
+
+          // Simple loop to check each user
+          let foundUser = null;
+          for (let i = 0; i < this.user.length; i++) {
+            if (this.user[i].username === username && this.user[i].password_hash === password) {
+              foundUser = this.user[i];
+              break; // Stop when we find a match
+            }
           }
-          else if (b === this.user.password_hash && this.user.role === "walker"){
-            window.location.href = 'walker-dashboard.html';
+
+          if (foundUser) {
+            alert(`Welcome ${foundUser.username}`);
+            if (foundUser.role === 'owner') {
+              window.location.href = 'owner-dashboard.html'; // Redirect for owner
+            } else if (foundUser.role === 'walker') {
+              window.location.href = 'walker-dashboard.html';
+            }
+          } else {
+            alert('Invalid username or password');
           }
         }
-
       }
     }).mount('#app');
   </script>
