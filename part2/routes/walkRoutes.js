@@ -4,14 +4,14 @@ const db = require('../models/db');
 
 // GET all walk requests (for walkers to view)
 router.get('/', async (req, res) => {
-  const { username } = req.
+  const { username } = req.session.user;
   try {
     const [rows] = await db.query(`
       SELECT wr.*, d.name AS dog_name, d.size, u.username AS owner_name
       FROM WalkRequests wr
       JOIN Dogs d ON wr.dog_id = d.dog_id
       JOIN Users u ON d.owner_id = u.user_id
-      WHERE wr.status = 'open'
+      WHERE wr.status = 'open' AND u.username = '
     `);
     res.json(rows);
   } catch (error) {
