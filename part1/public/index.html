@@ -1,73 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dog Walking Service - Dog of the Day</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Express</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
-<body class="bg-gray-900 text-white">
-    <div id="app" class="container mx-auto p-4">
-        <h1 class="text-4xl font-bold mb-2 animate-pulse">Dog of the Day!!!!!</h1>
-        <p class="text-lg mb-4">Welcome to our super exciting dog walking app! Check out the dog below!</p>
-        <div v-if="error" class="text-red-500 mb-4">{{ error }}</div>
-        <div v-if="dogImage" class="relative">
-            <img :src="dogImage" alt="Dog of the Day" class="w-full h-64 object-cover rounded-lg hover:scale-110 transition-all duration-500" @click="zoomImage">
-            <button @click="changeDog" class="absolute top-2 right-2 bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-700">Change Dog Now!!!</button>
-        </div>
-        <div class="mt-4">
-            <p class="text-xl">Name: <span class="font-bold">Fluffy</span></p>
-            <p class="text-xl">Breed: <span class="font-bold">Golden Retriever</span></p>
-            <p class="text-xl">Size: <span class="font-bold">Medium</span></p>
-            <button @click="showDetails = !showDetails" class="bg-green-500 text-white px-6 py-3 rounded-full mt-4 hover:bg-green-700">Click 5 Times to See More!!!</button>
-            <div v-if="showDetails" class="mt-4 text-sm">
-                <p>Fluffy loves long walks and treats! Book him today by clicking the button 5 more times!</p>
-            </div>
-        </div>
-    </div>
 
-    <script>
-        const { createApp } = Vue;
-        const app = createApp({
-            data() {
-                return {
-                    dogImage: null,
-                    error: null,
-                    showDetails: false,
-                    clickCount: 0
-                };
-            },
-            methods: {
-                async fetchDogImage() {
-                    try {
-                        const response = await fetch('https://dog.ceo/api/breeds/image/random');
-                        const data = await response.json();
-                        this.dogImage = data.message;
-                        this.error = null;
-                    } catch (err) {
-                        this.error = 'Failed to load dog image!';
-                    }
-                },
-                zoomImage() {
-                    this.dogImage = this.dogImage; // No actual zoom, just a placeholder
-                },
-                changeDog() {
-                    this.fetchDogImage();
-                },
-                toggleDetails() {
-                    this.clickCount++;
-                    if (this.clickCount >= 5) {
-                        this.showDetails = !this.showDetails;
-                        this.clickCount = 0; // Reset after showing
-                    }
-                }
-            },
-            mounted() {
-                this.fetchDogImage();
-            }
-        });
-        app.mount('#app');
-    </script>
+<body>
+    <h1>Express</h1>
+    <p>Welcome to Express</p>
 </body>
 </html>
