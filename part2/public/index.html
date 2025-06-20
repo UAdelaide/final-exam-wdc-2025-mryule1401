@@ -51,7 +51,6 @@
         };
       },
       async mounted() {
-                await this.fetchDogImg();
 
                 const dog = await fetch('/api/users');
                 const data = await dog.json();
@@ -59,11 +58,7 @@
 
             },
             methods: {
-                async fetchDogImg() {
-                    const itemsRes = await fetch(' https://dog.ceo/api/breeds/image/random');
-                    const data = await itemsRes.json();
-                    this.dogImg = data.message;
-                },
+
                 async nextDog() {
                     await this.fetchDogImg();
                     if (this.dogInfo.length > 0) {
