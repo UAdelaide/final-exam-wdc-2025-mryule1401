@@ -25,7 +25,7 @@ router.get('/walkrequests/open', async function (req, res) {
 
 router.get('/walkers/summary', async function (req, res) {
     const [rows] = await db.query(`
-SELECT
+            SELECT
                 u.username AS walker_username,
                 COALESCE(COUNT(wrat.rating), 0) AS total_ratings,
                 AVG(wrat.rating) AS average_rating,
