@@ -49,6 +49,7 @@
                 }
                 async nextDog(){
                     await this.fetchDogImg();
+                    if (this.dogInfo >0)
                 }
             }
         }).mount('#app');
