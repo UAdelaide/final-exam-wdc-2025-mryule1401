@@ -59,12 +59,6 @@
             },
             methods: {
 
-                async nextDog() {
-                    await this.fetchDogImg();
-                    if (this.dogInfo.length > 0) {
-                        this.currentIndex = (this.currentIndex + 1) % this.dogInfo.length;
-                }
-            }
         }
     }).mount('#app');
   </script>
