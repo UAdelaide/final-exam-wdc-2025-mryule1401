@@ -46,7 +46,7 @@
                     const data = await itemsRes.json();
                     this.dogImg = data.message;
                     console.log(this.dogImg);
-                }
+                },
                 async nextDog(){
                     await this.fetchDogImg();
                 }
