@@ -60,7 +60,7 @@ router.post('/:id/apply', async (req, res) => {
 });
 
 router.get('/getdog', async (req, res) => {
-  const { username } = req.body;
+  const { username } = req.session.user;
 
   try {
     const [rows] = await db.query(`
