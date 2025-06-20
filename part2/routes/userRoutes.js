@@ -32,7 +32,7 @@ router.get('/me',async (req, res) => {
   if (!req.session.user) {
     return res.status(401).json({ error: 'Not logged in' });
   }
-  const username }= req.session.user;
+  const { username }= req.session.user;
     const [rows] = await db.query(`
       SELECT user_id, username, role
       FROM Users
