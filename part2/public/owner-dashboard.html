@@ -148,7 +148,7 @@
         }
 
          async function getDog() {
-          const data = await fetch ('/getDog');
+          const data = await fetch ('/api/walks/getDog');
           dogs.value = await data.json()
         }
 
