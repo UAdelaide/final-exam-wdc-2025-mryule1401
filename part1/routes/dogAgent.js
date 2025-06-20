@@ -11,7 +11,7 @@ router.get('/dogs', async function (req, res) {
     res.json(rows);
 });
 
-router.get('/walkrequest/open', async function (req, res) {
+router.get('/walkrequests/open', async function (req, res) {
     const [rows] = await db.query(`
         SELECT r.request_id, d.name AS dog_name, r.requested_time, r.duration_minutes, r.location, u.username
         FROM WalkRequests r
@@ -23,7 +23,7 @@ router.get('/walkrequest/open', async function (req, res) {
 });
 
 
-router.get('/', async function (req, res) {
+router.get('/walker', async function (req, res) {
     const [rows] = await db.query(`
         SELECT r.request_id, d.name AS dog_name, r.requested_time, r.duration_minutes, r.location, u.username
         FROM WalkRequests r
