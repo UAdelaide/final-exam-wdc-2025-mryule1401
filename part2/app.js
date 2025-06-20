@@ -2,9 +2,7 @@ const express = require('express');
 const path = require('path');
 require('dotenv').config();
 var cookieParser = require('cookie-parser');
-var logger = require('morgan');
 var session = require('express-session');
-
 const app = express();
 
 // Middleware
