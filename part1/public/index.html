@@ -36,7 +36,8 @@
                 await this.fetchDogImg();
 
                 const dog = await fetch('/api/dogs');
-                this.dogInfo = await dog.json();
+                const data = await dog.json();
+                this.dog
 
             },
             methods: {
