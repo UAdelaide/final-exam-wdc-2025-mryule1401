@@ -69,6 +69,7 @@ router.get('/getdog', async (req, res) => {
       WHERE u.username = ?
     `, [username]);
 
+    req
     if (rows.length === 0) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
