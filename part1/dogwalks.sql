@@ -39,7 +39,7 @@ CREATE TABLE `Dogs` (
 
 LOCK TABLES `Dogs` WRITE;
 /*!40000 ALTER TABLE `Dogs` DISABLE KEYS */;
-INSERT INTO `Dogs` VALUES (1,1,'Max','medium'),(2,3,'Bella','small'),(3,2,'Jack','small'),(4,4,'Tippy','large'),(5,5,'Milo','medium');
+INSERT INTO `Dogs` VALUES (1,1,'Max','medium'),(2,3,'Bella','small'),(3,1,'Jack','small'),(4,4,'Tippy','large'),(5,4,'Milo','medium');
 /*!40000 ALTER TABLE `Dogs` ENABLE KEYS */;
 UNLOCK TABLES;
 
