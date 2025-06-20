@@ -30,7 +30,8 @@ router.get('/walkers/summary', async function (req, res) {
         JOIN WalkApplications wa ON u.user_id= wa.walker_id AND wa.status='accepted'
         JOIN WalkRequests wre ON wa.request_id = wre.request_id AND wre.status='completed'
         JOIN WalkRatigns wra ON wre.request_id =wrat.request_id
-        WHERE r.status ='open'
+        WHERE r.status ='walker'
+        GROUP BY u.username;
     `);
     res.json(rows);
 });
