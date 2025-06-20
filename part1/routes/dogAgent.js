@@ -29,7 +29,7 @@ router.get('/walkers/summary', async function (req, res) {
         FROM Users u
         JOIN WalkApplications wa ON u.user_id= wa.walker_id AND wa.status='accepted'
         JOIN WalkRequests wre ON wa.request_id = wre.request_id AND wre.status='completed'
-        JOIN WalkRatings wra ON wre.request_id =wrat.request_id
+        JOIN WalkRatings wra ON wre.request_id =wra.request_id
         WHERE r.status ='walker'
         GROUP BY u.username;
     `);
