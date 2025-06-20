@@ -93,7 +93,8 @@
         }
 
         async function getDog() {
-          const data = await fetch ('/getDog')
+          const data = await fetch ('/getDog');
+          const res = await data.json()
         }
 
         onMounted(() => {
