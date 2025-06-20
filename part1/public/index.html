@@ -15,10 +15,8 @@
             <img :src="dogImg" alt="dog">
         </div>
         <div class="dog-detail">
-            <div v-for="item in dogInfo" :key="item.name">
-                <p><strong>Name: {{item.name}}</strong></p>
-                <p><strong>size: {{item.size}}</strong></p>
-            </div>
+            <p v-if="dogInfo.length && dogInfo[currentIndex]"><strong>Name: {{ dogInfo[currentIndex].name }}</strong></p>
+            <p v-if="dogInfo.length && dogInfo[currentIndex]"><strong>Size: {{ dogInfo[currentIndex].size }}</strong></p>
         </div>
         <button @click="nextDog">Next</button>
     </div>
@@ -37,7 +35,7 @@
 
                 const dog = await fetch('/api/dogs');
                 const data = await dog.json();
-                this.dogInfo =Array.isArray(data)? data : [data];;
+                this.dogInfo = Array.isArray(data) ? data : [data];;
 
             },
             methods: {
@@ -47,7 +45,7 @@
                     this.dogImg = data.message;
                     console.log(this.dogImg);
                 },
-                async nextDog(){
+                async nextDog() {
                     await this.fetchDogImg();
                 }
             }
