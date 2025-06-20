@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>dog of the day</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
-     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 
 <body>
@@ -11,5 +12,41 @@
         <h1>dog of the day</h1>
         <p>Welcome to Express</p>
     </div>
+    <script>
+        const { createApp } = Vue;
+        createApp({
+            data() {
+                return {
+                    currentUserName: 'Mryule',
+                    items: [],
+                    selectedItem: null,
+                    messageText: '',
+                    messages: []
+                };
+            },
+            async mounted() {
+                const itemsRes = await fetch('/api/items');
+                this.items = await itemsRes.json();
+
+                const messagesRes = await fetch('/api/messages');
+                this.messages = await messagesRes.json();
+            },
+            methods: {
+                async sendMessage() {
+                    if (!this.selectedItem.BookID || !this.messageText.trim()) {
+                        return alert('Please select a book and enter a message.');
+                    }
+                    await fetch('/api/messages', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ bookID: this.selectedItem.BookID, sellerID: this.selectedItem.SellerID, message: this.messageText })
+                    });
+                    alert('Message sent!');
+                    this.messageText = '';
+                }
+            }
+        }).mount('#app');
+    </script>
 </body>
+
 </html>
