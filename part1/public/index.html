@@ -13,9 +13,9 @@
         <div v-if="dogImg">
             <img :src="dogImg" alt="dog">
             <div class="dog-detail">
-                <div v-for="item in dogInfo" :key></div>
-                <p><strong v-for="item in dogInfo">Name: {{item.name}}</strong></p>
-                <p><strong v-for="item in dogInfo">size: {{item.size}}</strong></p>
+                <div v-for="item in dogInfo" :key="item.name"></div>
+                <p><strong>Name: {{item.name}}</strong></p>
+                <p><strong>size: {{item.size}}</strong></p>
             </div>
         </div>
     </div>
