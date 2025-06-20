@@ -110,6 +110,7 @@
         const walks = ref([]);
         const message = ref('');
         const error = ref('');
+        const dogs =ref([]);
 
         async function loadWalks() {
           try {
@@ -149,8 +150,7 @@
          async function getDog() {
           const data = await fetch ('/getDog');
           const result = await data.json()
-          var arr = Array.isArray(result);
-          console.log(arr);
+          this
         }
 
         onMounted(() => {
