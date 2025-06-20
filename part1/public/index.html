@@ -21,7 +21,7 @@
                 };
             },
             async mounted() {
-                const itemsRes = await fetch(' https://dog.ceo/api/breeds/image/random');
+                const itemsRes = await fetch('https://dog.ceo/api/breeds/image/random');
                 this.dogImg = await itemsRes.json();
                 console.log(this.dogImg);
 
