@@ -149,8 +149,7 @@
 
          async function getDog() {
           const data = await fetch ('/getDog');
-          const result = await data.json()
-          this.dogs = result.dogs;
+          dogs.value = await data.json()
         }
 
         onMounted(() => {
