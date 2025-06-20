@@ -124,7 +124,6 @@
         }
 
         async function submitWalkRequest() {
-          form.value.dog_id = Number(form.value.dog_id);
           try {
             const res = await fetch('/api/walks', {
               method: 'POST',
