@@ -21,8 +21,7 @@ router.get('/', async (req, res) => {
 
 // POST a new walk request (from owner)
 router.post('/', async (req, res) => {
-  const { requested_time, duration_minutes, location } = req.body;
-  const {dog_id} =req.session;
+  const { dog_id, requested_time, duration_minutes, location } = req.body;
 
   try {
     const [result] = await db.query(`
@@ -70,10 +69,10 @@ router.get('/getdog', async (req, res) => {
       WHERE u.username = ?
     `, [username]);
 
-    req.session= rows[1];
     if (rows.length === 0) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
+
     res.json(rows);
   } catch (error) {
     res.status(500).json({ error: 'Login failed' });
