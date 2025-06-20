@@ -96,8 +96,7 @@
         async function getDog() {
           const data = await fetch ('api/walks/getDog');
           const result = await data.json()
-          this.dog = 
-          console.log(arr);
+          this.dog = result.dog
         }
 
         onMounted(() => {
