@@ -50,16 +50,19 @@
           user: []
         };
       },
-      // async mounted() {
+      async mounted() {
 
-        //         const dog = await fetch('/api/users');
-        //         const data = await dog.json();
-        //         this.user = Array.isArray(data) ? data : [data];
+                const dog = await fetch('/api/users');
+                const data = await dog.json();
+                this.user = Array.isArray(data) ? data : [data];
 
-        //     },
-        //     methods: {
+            },
+            methods: {
+              login (){
+                
+              }
 
-        // }
+        }
     }).mount('#app');
   </script>
 
