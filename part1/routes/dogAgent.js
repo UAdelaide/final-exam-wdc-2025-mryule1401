@@ -25,7 +25,7 @@ router.get('/walkrequests/open', async function (req, res) {
 
 router.get('/walkers/summary', async function (req, res) {
     const [rows] = await db.query(`
-        SELECT r.request_id, d.name AS dog_name, r.requested_time, r.duration_minutes, r.location, u.username
+        SELECT u.username
         FROM WalkRequests r
         JOIN Dogs d ON r.dog_id = d.dog_id
         JOIN Users u ON d.owner_id = u.user_id
