@@ -59,7 +59,7 @@ router.post('/:id/apply', async (req, res) => {
   }
 });
 
-router.get('/login', async (req, res) => {
+router.get('/dogrequest', async (req, res) => {
   const { username, password } = req.session;
 
   try {
