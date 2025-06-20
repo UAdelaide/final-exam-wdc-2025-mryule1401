@@ -10,3 +10,5 @@ const [rows] = await db.query(`
 `);
 res.json(rows);
 });
+
+module.exports =router;
