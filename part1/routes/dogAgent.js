@@ -6,7 +6,7 @@ router.get('/dogs', async function(req, res) {
 const [rows] = await db.query(`
     SELECT d.name, d.size, u.username
     FROM Dogs d
-    JOIN Users u ON bl.BookInfoID = b.BookInfoID
+    JOIN Users u d. = b.BookInfoID
     JOIN Users u ON bl.SellerID = u.UserID
 `);
 res.json(rows);
