@@ -32,7 +32,9 @@ router.get('/me', async (req, res) => {
   if (!req.session.user) {
     return res.status(401).json({ error: 'Not logged in' });
   }
-  const { username } = 
+  const { username } = req.session.user;
+
+  const [rows] = 
 });
 
 // POST login (dummy version)
