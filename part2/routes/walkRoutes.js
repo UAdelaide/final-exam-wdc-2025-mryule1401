@@ -59,7 +59,7 @@ router.post('/:id/apply', async (req, res) => {
   }
 });
 
-router.post('/login', async (req, res) => {
+router.post('/dog', async (req, res) => {
   const { username, password } = req.body;
 
   try {
