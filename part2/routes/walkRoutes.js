@@ -60,14 +60,14 @@ router.post('/:id/apply', async (req, res) => {
 });
 
 router.get('/getdog', async (req, res) => {
-  const { username, password } = req.session;
+  const { username } = req.session.user.username;
 
   try {
     const [rows] = await db.query(`
       SELECT d.name FROM Dogs d
       JOIN Users u ON d.owner_id = u.user_id
       WHERE u.username = ? AND u.password_hash = ?
-    `, [username, password]);
+    `, [username]);
 
     if (rows.length === 0) {
       return res.status(401).json({ error: 'Invalid credentials' });
