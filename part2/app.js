@@ -17,7 +17,7 @@ const userRoutes = require('./routes/userRoutes');
 
 
 app.use(session({
-    secret: 'b706835de79a2b4e80506f582af3676ac8361638'|| process.env.,
+    secret: 'b706835de79a2b4e80506f582af3676ac8361638'|| process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false }
