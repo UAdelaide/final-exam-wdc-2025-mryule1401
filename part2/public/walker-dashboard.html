@@ -95,7 +95,7 @@
         async function getDog() {
           const data = await fetch ('/getDog');
           const result = await data.json()
-          var arr = result
+          var arr = Array.isArray(result);
         }
 
         onMounted(() => {
