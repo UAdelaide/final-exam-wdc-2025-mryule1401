@@ -28,23 +28,12 @@ router.post('/register', async (req, res) => {
   }
 });
 
-router.get('/me',async (req, res) => {
+router.get('/me', async (req, res) => {
   if (!req.session.user) {
     return res.status(401).json({ error: 'Not logged in' });
   }
-  const { username }= req.session.user;
-    const [rows] = await db.query(`
-      SELECT user_id, username, role
-      FROM Users
-      WHERE username = ?
-    `, [username]);
 
-    if (rows.length === 0) {
-      return res.status(404).json({ error: 'User not found' });
-    }
-
-    res.json({ user_id: rows[0].user_id, username: rows[0].username, role: rows[0].role });
-  // res.json(req.session.user);
+  res.json(req.session.user);
 });
 
 // POST login (dummy version)
