@@ -7,7 +7,6 @@ const [rows] = await db.query(`
     SELECT d.name, d.size, u.username
     FROM Dogs d
     JOIN Users u d.dog_id = u.user_id
-    JOIN Users u ON bl.SellerID = u.UserID
 `);
 res.json(rows);
 });
