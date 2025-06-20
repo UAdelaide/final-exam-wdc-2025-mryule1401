@@ -16,10 +16,17 @@
     <h1 class="mb-4 text-primary">{{ message }}</h1>
     <p class="lead">Connect with trusted walkers for your beloved dog!</p>
 
-    <label for="username">Username</label><input type="text" id="username" />
-    <label for="password">Password</label><input type="password" id="password" />
-    <button type="button" onclick="login()">Login</button>
-    <!-- <button type="button" onclick="logout()">Logout</button> -->
+    <form onsubmit="login(); return false;">
+      <div class="mb-3">
+        <label for="email">Email</label>
+        <input type="email" id="email" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label for="password">Password</label>
+        <input type="password" id="password" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Log In</button>
+    </form>
 
     <a href="owner-dashboard.html" class="btn btn-outline-primary me-2">Owner Dashboard</a>
     <a href="walker-dashboard.html" class="btn btn-outline-success">Walker Dashboard</a>
