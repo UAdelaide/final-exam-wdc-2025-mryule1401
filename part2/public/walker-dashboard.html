@@ -96,7 +96,7 @@
         async function getDog() {
           const data = await fetch ('api/walks/getDog');
           const result = await data.json()
-          var arr = Array.isArray(result);
+          this.dog = 
           console.log(arr);
         }
 
