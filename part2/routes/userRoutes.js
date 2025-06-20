@@ -32,16 +32,18 @@ router.get('/me', async (req, res) => {
   if (!req.session.user) {
     return res.status(401).json({ error: 'Not logged in' });
   }
-  const { username } = req.session.user;
+  try {
+    const { username } = req.session.user;
 
-  const [rows] = await db.query(`
+    const [rows] = await db.query(`
     SELECT user_id, username, role
     FROM Users
     WHERE username =?
-    `,[username]);
+    `, [username]);
     if (rows.length === 0) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
+  }
 });
 
 
@@ -65,9 +67,9 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.post('/logout', function(req, res, next) {
-    delete req.session.user;
-    res.send();
+router.post('/logout', function (req, res, next) {
+  delete req.session.user;
+  res.send();
 });
 
 module.exports = router;
