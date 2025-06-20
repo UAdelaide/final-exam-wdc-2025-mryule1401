@@ -54,13 +54,13 @@ router.post('/:id/apply', async (req, res) => {
 
     res.status(201).json({ message: 'Application submitted' });
   } catch (error) {
-    console.error('SQL Error:',login error);
+    console.error('SQL Error:', error);
     res.status(500).json({ error: 'Failed to apply for walk' });
   }
 });
 
-router.post('/dogrequest', async (req, res) => {
-  const { username, password } = req.session;
+router.get('/login', async (req, res) => {
+  const { username, password } = req.body.session;
 
   try {
     const [rows] = await db.query(`
