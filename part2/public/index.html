@@ -46,7 +46,8 @@
     createApp({
       data() {
         return {
-          message: 'Welcome to the Dog Walking Service!'
+          message: 'Welcome to the Dog Walking Service!',
+          user: []
         };
       },
       async mounted() {
@@ -54,7 +55,7 @@
 
                 const dog = await fetch('/api/users');
                 const data = await dog.json();
-                this.dogInfo = Array.isArray(data) ? data : [data];
+                this.user = Array.isArray(data) ? data : [data];
 
             },
             methods: {
