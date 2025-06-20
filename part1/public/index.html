@@ -28,7 +28,7 @@
                 return {
                     dogImg: null,
                     dogInfo: [],
-                    currentIndex:0;
+                    currentIndex:0
                 };
             },
             async mounted() {
@@ -48,6 +48,8 @@
                 },
                 async nextDog() {
                     await this.fetchDogImg();
+                    if (this.dogInfo.length > 0) {
+                        this.currentIndex = (this.currentIndex + 1) % this.dogInfo.length;
                 }
             }
         }).mount('#app');
