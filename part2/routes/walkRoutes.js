@@ -73,7 +73,7 @@ router.get('/getdog', async (req, res) => {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
-    res.json(rows);
+    res.json(rows[0]);
   } catch (error) {
     res.status(500).json({ error: 'Login failed' });
   }
