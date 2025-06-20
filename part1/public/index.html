@@ -28,10 +28,11 @@
             },
             methods: {
                 async fetchDogImg(){
-                    const itemsRes = await fetch('https://dog.ceo/api/breeds/image/random');
-                    this.dogImg = await itemsRes.json();
-                    console.log(this.dogImg);
+
                 }
+                const itemsRes = await fetch('https://dog.ceo/api/breeds/image/random');
+                this.dogImg = await itemsRes.json();
+                console.log(this.dogImg);
             }).mount('#app');
     </script>
 </body>
