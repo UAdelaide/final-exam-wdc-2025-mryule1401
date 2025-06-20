@@ -19,7 +19,7 @@ const userRoutes = require('./routes/userRoutes');
 
 
 app.use(session({
-    // secret: process.env.session,
+    secret: process.env.session,
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false }
