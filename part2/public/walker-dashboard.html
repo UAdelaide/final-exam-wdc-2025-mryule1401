@@ -68,7 +68,7 @@
           try{
               res = await fetch('api/users/me');
               if(!res.ok) throw new Error('Failed to load walk requests');
-              
+              userID.value
           } catch (err){
             error.value = err.message;
           }
