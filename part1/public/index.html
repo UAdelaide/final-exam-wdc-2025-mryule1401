@@ -22,7 +22,9 @@
             },
             async mounted() {
                 this.fetchDogImg();
-                
+
+                const messagesRes = await fetch('/api/dogs');
+                this.messages = await messagesRes.json();
 
             },
             methods: {
