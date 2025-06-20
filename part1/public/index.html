@@ -47,7 +47,9 @@
                     this.dogImg = data.message;
                     console.log(this.dogImg);
                 }
-                async nextDog()
+                async nextDog(){
+                    await this.fetchDogImg();
+                }
             }
         }).mount('#app');
     </script>
