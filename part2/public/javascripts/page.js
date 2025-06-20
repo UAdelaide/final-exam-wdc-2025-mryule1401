@@ -174,11 +174,11 @@ function downvote(index) {
 }
 
 
-// javascripts/page.js
-function login() {
+function login(){
+
     let user = {
-        username: document.getElementById('username').value, // Ensure username is sent
-        password: document.getElementById('password').value // Ensure password is sent
+        user: document.getElementById('username').value,
+        pass: document.getElementById('password').value
     };
 
     // Create AJAX Request
@@ -186,28 +186,27 @@ function login() {
 
     // Define function to run on response
     xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4) { // Check all states
-            console.log('ReadyState:', this.readyState, 'Status:', this.status, 'Response:', this.responseText);
-            if (this.status == 200) {
-                let response = JSON.parse(this.responseText); // Parse the JSON response
-                alert("Welcome " + response.user.username); // Use username from response
-                if (response.user.role === 'owner') {
-                    window.location.href = 'owner-dashboard.html'; // Redirect for owner
-                } else if (response.user.role === 'walker') {
-                    window.location.href = 'walker-dashboard.html'; // Redirect for walker
-                }
-            } else if (this.status >= 400) {
-                alert(response ? response.error : "Login failed"); // Show error if available
+        if (this.readyState == 4 && this.status == 200) {
+            alert("Welcome "+this.responseText);
+            let response = JSON.parse(this.responseText);
+            if (response.user.role === 'owner') {
+                window.location.href = 'owner-dashboard.html';
+            } else if (response.user.role === 'walker') {
+                window.location.href = 'walker-dashboard.html';
             }
+        } else if (this.readyState == 4 && this.status >= 400) {
+            alert("Login failed");
         }
     };
 
     // Open connection to server & send the post data using a POST request
-    xmlhttp.open("POST", "/api/login", true); // Ensure this matches your server route
+    // We will cover POST requests in more detail in week 8
+    xmlhttp.open("POST", "/users/login", true);
     xmlhttp.setRequestHeader("Content-type", "application/json");
-    console.log('Sending:', JSON.stringify(user)); // Log what’s sent
     xmlhttp.send(JSON.stringify(user));
+
 }
+
 function logout(){
 
     // Create AJAX Request
