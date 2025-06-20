@@ -36,7 +36,7 @@
 
                 const dog = await fetch('/api/dogs');
                 const data = await dog.json();
-                this.dogInfo = Array.isArray(data) ? data : [data];;
+                this.dogInfo = Array.isArray(data) ? data : [data];
 
             },
             methods: {
