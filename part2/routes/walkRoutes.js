@@ -66,7 +66,7 @@ router.get('/getdog', async (req, res) => {
     const [rows] = await db.query(`
       SELECT d.name FROM Dogs d
       JOIN Users u ON d.owner_id = u.user_id
-      WHERE u.username = ? AND u.password_hash = ?
+      WHERE u.username = ?
     `, [username]);
 
     if (rows.length === 0) {
