@@ -65,7 +65,9 @@
         const userID= ref('');
 
         async function getCurrentUser(){
-          try res = await fetch('api/users/me')
+          try{
+              res = await fetch('api/users/me')
+          }
         }
 
         async function loadWalkRequests() {
