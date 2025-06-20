@@ -65,7 +65,7 @@ router.post('/dogrequest', async (req, res) => {
   try {
     const [rows] = await db.query(`
       SELECT d.name FROM Dogs
-      JOIN
+      JOIN U
       WHERE username = ? AND password_hash = ?
     `, [username, password]);
 
