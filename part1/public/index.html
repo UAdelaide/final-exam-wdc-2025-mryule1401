@@ -28,7 +28,7 @@
                 };
             },
             async mounted() {
-                this.fetchDogImg();
+                await this.fetchDogImg();
 
                 const dog = await fetch('/api/dogs');
                 this.dogInfo = await dog.json();
