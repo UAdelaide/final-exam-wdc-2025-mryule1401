@@ -21,19 +21,15 @@
                 };
             },
             async mounted() {
-                const itemsRes = await fetch('https://dog.ceo/api/breeds/image/random');
+                const itemsRes = await fetch(' https://dog.ceo/api/breeds/image/random');
                 this.dogImg = await itemsRes.json();
                 console.log(this.dogImg);
 
             },
             methods: {
-                async fetchDogImg(){
-
-                }
-                const itemsRes = await fetch('https://dog.ceo/api/breeds/image/random');
-                this.dogImg = await itemsRes.json();
-                console.log(this.dogImg);
-            }).mount('#app');
+                as
+            }
+        }).mount('#app');
     </script>
 </body>
 
