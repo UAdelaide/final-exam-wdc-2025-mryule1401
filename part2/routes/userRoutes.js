@@ -34,7 +34,9 @@ router.get('/me', async (req, res) => {
   }
   const { username } = req.session.user;
 
-  const [rows] = 
+  const [rows] = await db.query(`
+    SELECT us
+    `)
 });
 
 // POST login (dummy version)
