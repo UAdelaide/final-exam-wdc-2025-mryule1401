@@ -35,7 +35,7 @@ router.get('/me', async (req, res) => {
   const { username } = req.session.user;
 
   const [rows] = await db.query(`
-    SELECT us
+    SELECT user_id, username, role
     `)
 });
 
