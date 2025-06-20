@@ -11,7 +11,7 @@ router.get('/dogs', async function (req, res) {
     res.json(rows);
 });
 
-router.get('/dogs', async function (req, res) {
+router.get('/walkrequest/open', async function (req, res) {
     const [rows] = await db.query(`
         SELECT d.name, d.size, u.username
         FROM Dogs d
