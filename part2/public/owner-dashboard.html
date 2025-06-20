@@ -51,7 +51,7 @@
 
             <select v-model="form.dog_id" id="dogSelection">
               <optgroup label="--Choose a dog--"></optgroup>
-              <option v-for="item in dogs" :value="item.name">{{item.name}}</option>
+              <option v-for="item in dogs" :value="item.id"> {{item.name}} </option>
             </select>
 
           </div>
