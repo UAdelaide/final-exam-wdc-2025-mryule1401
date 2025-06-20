@@ -39,6 +39,9 @@ router.get('/me', async (req, res) => {
     FROM Users
     WHERE username =?
     `,[username]);
+    if (rows.length === 0) {
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
 });
 
 
