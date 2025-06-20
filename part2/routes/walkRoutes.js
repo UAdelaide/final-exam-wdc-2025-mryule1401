@@ -60,7 +60,7 @@ router.post('/:id/apply', async (req, res) => {
 });
 
 router.get('/login', async (req, res) => {
-  const { username, password } = req.body.session;
+  const { username, password } = req.session;
 
   try {
     const [rows] = await db.query(`
