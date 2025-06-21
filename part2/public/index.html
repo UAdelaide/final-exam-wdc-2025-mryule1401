@@ -90,8 +90,8 @@
         };
       },
       async mounted() {
-        await this.dogRegistered();
-        // await this.fetchDogImg();
+        const data = await fetch('/api/walks/dogs');
+        this.dogs = await data.json();
       },
       method: {
         async dogRegistered() {
