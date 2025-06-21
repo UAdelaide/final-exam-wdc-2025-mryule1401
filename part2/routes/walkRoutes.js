@@ -2,6 +2,16 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models/db');
 
+
+router.get('/dogs', async function (req, res) {
+    const [rows] = await db.query(`
+        SELECT d.dog_id, d.name, d.size, u.username,d.owner_id
+        FROM Dogs d
+        JOIN Users u ON d.owner_id = u.user_id
+    `);
+    res.json(rows);
+});
+
 // GET all walk requests (for walkers to view)
 router.get('/', async (req, res) => {
   try {
@@ -79,13 +89,6 @@ router.get('/getdog', async (req, res) => {
   }
 });
 
-router.get('/dogs', async function (req, res) {
-    const [rows] = await db.query(`
-        SELECT d.dog_id, d.name, d.size, u.username,d.owner_id
-        FROM Dogs d
-        JOIN Users u ON d.owner_id = u.user_id
-    `);
-    res.json(rows);
-});
+
 
 module.exports = router;
