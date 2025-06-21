@@ -44,7 +44,7 @@
     }
     img{
       width: 60px;
-      height: 60px;
+      height: 0px;
     }
   </style>
 </head>
@@ -98,7 +98,7 @@
         this.dogs = await data.json();
         const itemsRes = await fetch(' https://dog.ceo/api/breeds/image/random');
         const data1 = await itemsRes.json();
-        this.dogImg = Array.isArray(data1);
+        this.dogImg = data1.message;
       }
     }).mount('#app');
   </script>
