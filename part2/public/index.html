@@ -98,7 +98,7 @@
         this.dogs = await data.json();
         const itemsRes = await fetch(' https://dog.ceo/api/breeds/image/random');
         const data1 = await itemsRes.json();
-        this.dogImg = data1.message;
+        this.dogImg = Array.isArray(data1);
       }
     }).mount('#app');
   </script>
