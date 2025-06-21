@@ -67,12 +67,12 @@
             <th>Owner ID</th>
             <th>Photo</th>
           </tr>
-          <tr>
-            <!-- <th> {{item.dog_id}} </th>
+          <tr v-for="item in dogs">
+            <th> {{item.dog_id}} </th>
             <th> {{item.name}} </th>
             <th> {{item.size}} </th>
-            <th> {{item.owner_id}} </th> -->
-            <th><img :src="dogImg" alt=""></th>
+            <th> {{item.owner_id}} </th>
+            <th v-if><img :src="dogImg" alt="item.name"></th>
           </tr>
         </table>
       </div>
@@ -90,14 +90,14 @@
         };
       },
       async mounted() {
-        // await this.dogRegistered();
+        await this.dogRegistered();
         await this.fetchDogImg();
       },
       method: {
-        // async dogRegistered() {
-        //   const data = await fetch('/api/walks/dogs');
-        //   this.dogs = await data.json();
-        // },
+        async dogRegistered() {
+          const data = await fetch('/api/walks/dogs');
+          this.dogs = await data.json();
+        },
         async fetchDogImg() {
           const itemsRes = await fetch(' https://dog.ceo/api/breeds/image/random');
           const data = await itemsRes.json();
