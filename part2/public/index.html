@@ -82,7 +82,8 @@
       },
       method: {
         async dogRegistered(){
-          const data = await fetch ('/api/walks/dogs')
+          const data = await fetch ('/api/walks/dogs');
+          this.dogs = await data.json()
         }
       }
     }).mount('#app');
