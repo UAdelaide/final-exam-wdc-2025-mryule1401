@@ -76,7 +76,7 @@
             <th> {{item.name}} </th>
             <th> {{item.size}} </th>
             <th> {{item.owner_id}} </th>
-            <th v-if="dogImg" v-for="item in dogImg"><img :src="item" alt="item.name"></th>
+            <th v-if="dogImg"><img :src="dogImg" alt="item.name"></th>
           </tr>
         </table>
       </div>
@@ -96,10 +96,13 @@
       async mounted() {
         const data = await fetch('/api/walks/dogs');
         this.dogs = await data.json();
+        let i =0;
+        while (i< this.dogs.length){
           const itemsRes = await fetch(' https://dog.ceo/api/breeds/image/random');
           const data1 = await itemsRes.json();
           this.dogImg = data1.message;
           i++;
+        }
       }
     }).mount('#app');
   </script>
