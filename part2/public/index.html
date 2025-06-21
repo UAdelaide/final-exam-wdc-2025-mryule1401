@@ -78,12 +78,12 @@
         };
       },
       async mounted(){
-
+        dogRegistered();
       },
       method: {
         async dogRegistered(){
           const data = await fetch ('/api/walks/dogs');
-          this.dogs = await data.json()
+          this.dogs = await data.json();
         }
       }
     }).mount('#app');
