@@ -25,15 +25,19 @@
     .btn-login:hover {
       background-color: rgb(39, 188, 242);
     }
-    h2{
+
+    h2 {
       padding-top: 2em;
     }
-    table{
+
+    table {
       font-family: Arial, Helvetica, sans-serif;
       border-collapse: collapse;
       width: 100%;
     }
-    td, th{
+
+    td,
+    th {
       border: 1px solid #dddddd;
       text-align: left;
       padding: 8px;
@@ -75,15 +79,21 @@
         return {
           message: 'Welcome to the Dog Walking Service!',
           dogs: [],
+          dogImg: [],
         };
       },
-      async mounted(){
+      async mounted() {
         dogRegistered();
       },
       method: {
-        async dogRegistered(){
-          const data = await fetch ('/api/walks/dogs');
+        async dogRegistered() {
+          const data = await fetch('/api/walks/dogs');
           this.dogs = await data.json();
+        },
+        async fetchDogImg() {
+          const itemsRes = await fetch(' https://dog.ceo/api/breeds/image/random');
+          const data = await itemsRes.json();
+          this.dogImg = data.message;
         }
       }
     }).mount('#app');
