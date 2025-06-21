@@ -201,7 +201,7 @@ function login(){
 
     // Open connection to server & send the post data using a POST request
     // We will cover POST requests in more detail in week 8
-    xmlhttp.open("POST", "api/users/login", true);
+    xmlhttp.open("POST", "/api/users/login", true);
     xmlhttp.setRequestHeader("Content-type", "application/json");
     xmlhttp.send(JSON.stringify(user));
 
@@ -213,7 +213,7 @@ function logout(){
     var xmlhttp = new XMLHttpRequest();
     window.location.href = 'index.html';
     // Open connection to server & send the post data using a POST request
-    xmlhttp.open("POST", "api/users/logout", true);
+    xmlhttp.open("POST", "/api/users/logout", true);
     xmlhttp.send();
 
 }
