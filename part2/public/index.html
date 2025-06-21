@@ -72,7 +72,7 @@
             <th> {{item.name}} </th>
             <th> {{item.size}} </th>
             <th> {{item.owner_id}} </th>
-            <th v-if><img :src="dogImg" alt="item.name"></th>
+            <th v-if="dogImg"><img :src="dogImg" alt="item.name"></th>
           </tr>
         </table>
       </div>
@@ -86,7 +86,7 @@
         return {
           message: 'Welcome to the Dog Walking Service!',
           dogs: [],
-          dogImg: [],
+          dogImg: []
         };
       },
       async mounted() {
