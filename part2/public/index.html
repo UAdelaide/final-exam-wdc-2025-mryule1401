@@ -96,11 +96,11 @@
       async mounted() {
         const data = await fetch('/api/walks/dogs');
         this.dogs = await data.json();
-        while (i< dogs.length){
+        while (i< 5){
           const itemsRes = await fetch(' https://dog.ceo/api/breeds/image/random');
           const data1 = await itemsRes.json();
           this.dogImg = data1.message;
-          i++
+          i++;
         }
       }
     }).mount('#app');
