@@ -94,10 +94,6 @@
         this.dogs = await data.json();
       },
       method: {
-        async dogRegistered() {
-          const data = await fetch('/api/walks/dogs');
-          this.dogs = await data.json();
-        },
         // async fetchDogImg() {
         //   const itemsRes = await fetch(' https://dog.ceo/api/breeds/image/random');
         //   const data = await itemsRes.json();
